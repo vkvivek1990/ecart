@@ -33,24 +33,25 @@ const Product = ({ product }) => {
             <p className="card-text price">Rs. {product.price}</p>
           </div>
         </div>
-
-        <button
-          className="btn cart-btn"
-          disabled={product.inCart ? true : false}
-          onClick={() => dispatch(addtocartAction(product.id))}
-        >
-          {product.inCart ? (
-            <p className="text-capitalize mb-0" disabled>
-              <i class="bi bi-cart-check-fill"></i>
-              In Cart
-            </p>
-          ) : (
-            <span>
-              <i class="bi bi-cart-plus-fill"></i>
-              Add To Cart
-            </span>
-          )}
-        </button>
+        <div className="cartBtn">
+          <button
+            className="btn cart-btn"
+            disabled={product.inCart ? true : false}
+            onClick={() => dispatch(addtocartAction(product.id))}
+          >
+            {product.inCart ? (
+              <p className="text-capitalize mb-0" disabled>
+                <i class="bi bi-cart-check-fill"></i>
+                In Cart
+              </p>
+            ) : (
+              <span>
+                <i class="bi bi-cart-plus-fill"></i>
+                Add To Cart
+              </span>
+            )}
+          </button>
+        </div>
       </div>
     </CartContainer>
   );
