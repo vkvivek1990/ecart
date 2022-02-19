@@ -23,6 +23,10 @@ export const Sidebarcontainer = styled("div")`
     margin: 40px 0;
   }
 
+  /* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
   .wrapper {
     display: flex;
     width: 100%;
@@ -30,14 +34,14 @@ export const Sidebarcontainer = styled("div")`
   }
 
   #sidebar {
-    // min-width: 250px;
-    // max-width: 250px;
+    min-width: 250px;
+    max-width: 250px;
     color: #fff;
     transition: all 0.3s;
   }
 
   #sidebar.active {
-    // margin-left: -250px;
+    margin-left: -250px;
   }
 
   #sidebar .sidebar-header {
@@ -87,6 +91,7 @@ export const Sidebarcontainer = styled("div")`
   ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
+    background: #6d7fcc;
   }
 
   ul.CTAs {
@@ -112,6 +117,10 @@ export const Sidebarcontainer = styled("div")`
     color: #fff !important;
   }
 
+  /* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
   #content {
     width: 100%;
     padding: 20px;
@@ -119,9 +128,9 @@ export const Sidebarcontainer = styled("div")`
     transition: all 0.3s;
   }
 
-  .active > .subMenu {
-    display: block;
-  }
+  /* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
 
   @media (max-width: 768px) {
     #sidebar {

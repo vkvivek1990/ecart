@@ -2,7 +2,6 @@ import styled from "styled-components";
 import ProductList from "../../components/ProductList";
 
 export const ProductListContainer = styled(ProductList)`
-  display: inline-block;
   .product {
     -webkit-transition: all 100ms linear;
     transition: all 100ms linear;
@@ -45,7 +44,7 @@ export const ProductListContainer = styled(ProductList)`
     justify-content: center;
     z-index: 9;
     color: #f3f3f3;
-    font-size: 1.5rem;
+    font-size: 1rem;
     cursor: pointer;
     opacity: 0;
     -webkit-transition: all 200ms linear;

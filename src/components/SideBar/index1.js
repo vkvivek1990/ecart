@@ -1,54 +1,10 @@
-import { useState } from "react";
 import { Sidebarcontainer } from "./styles";
-import Menulist from "./menulist";
 
 const Sidebar = () => {
-  const [menu, setMenu] = useState("");
-  const menuAction = (e) => {
-    console.log(e.target.id);
-    setMenu(e.target.id);
-  };
-  const subMenuAction = (e) => {
-    e.stopPropagation();
-  };
   return (
     <Sidebarcontainer>
       <nav id="sidebar">
         <ul class="list-unstyled components">
-          {Menulist.map((mainMenu) => {
-            return (
-              <li
-                className={`menu ${menu === mainMenu.mainMenu ? "active" : ""}`}
-                id={mainMenu.mainMenu}
-                onClick={menuAction}
-              >
-                <a
-                  href="#homeSubmenu"
-                  data-toggle="collapse"
-                  aria-expanded="false"
-                  class="dropdown-toggle"
-                  id={mainMenu.mainMenu}
-                >
-                  {mainMenu.mainMenu}
-                </a>
-                <ul
-                  class="collapse list-unstyled subMenu"
-                  id={mainMenu.mainMenu}
-                >
-                  {mainMenu.subMenu.map((subMenu) => {
-                    return (
-                      <li onClick={subMenuAction}>
-                        <a href="#">{subMenu}</a>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </li>
-            );
-          })}
-        </ul>
-
-        {/* <ul class="list-unstyled components">
           <li class="active">
             <a
               href="#homeSubmenu"
@@ -100,7 +56,7 @@ const Sidebar = () => {
           <li>
             <a href="#">Others</a>
           </li>
-        </ul> */}
+        </ul>
       </nav>
     </Sidebarcontainer>
   );

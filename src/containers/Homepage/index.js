@@ -1,23 +1,21 @@
-import { Fragment } from "react";
-import NavBar from "../../components/NavBar";
-import Login from "../Login";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchProducts } from "../../actions";
 import ProductList from "../../components/ProductList";
 import Sidebar from "../../components/SideBar";
 
 const Homepage = () => {
+  const dispatch = useDispatch();
+  useEffect(() => dispatch(fetchProducts()), []);
   return (
-    <Fragment>
-      <NavBar />
-      <div className="row">
-        <div className="col-2">
-          <Sidebar />
-        </div>
-        <div className="col-10">
-          <ProductList />
-        </div>
+    <div className="row container-fluid">
+      <div className="d-none d-sm-none d-lg-block  col-lg-2 col-xl-2">
+        <Sidebar />
       </div>
-      <Login />
-    </Fragment>
+      <div className="col-xs-12 col-md-12 col-lg-10 col-xl-10">
+        <ProductList />
+      </div>
+    </div>
   );
 };
 export default Homepage;

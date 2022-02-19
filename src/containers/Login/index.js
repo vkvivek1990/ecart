@@ -1,27 +1,35 @@
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setloginDetails, toggleLoginModal } from "../../actions";
 import Modal from "../../components/Modal";
-import { Modalheader, Modalbody } from "./styles";
+import { Modalheader, Modalbody, ModalContainer } from "./styles";
 
 const Login = () => {
-  return (
+  const modalOpen = useSelector((state) => state.loginModal);
+  const dispatch = useDispatch();
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const onChangeInput = (e, mode) => {
+    const regex = /^(.+)@(.+)$/g;
+    const { value } = e.target;
+    if (mode === "username") {
+      // if (regex.test(value)) {
+      setUserName(value);
+      // }
+    } else {
+      setPassword(value);
+    }
+  };
+  return modalOpen ? (
     <Modal id="modal-root">
-      <div
-        className="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
+      <ModalContainer onClick={() => dispatch(toggleLoginModal())}>
         <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content">
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <Modalheader className="modal-header">
-              {/* <h5 className="modal-title" id="exampleModalLabel">
-                Modal title
-              </h5> */}
               <button
                 type="button"
                 className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
+                onClick={() => dispatch(toggleLoginModal())}
               ></button>
             </Modalheader>
             <div className="modal-body">
@@ -38,6 +46,8 @@ const Login = () => {
                         type="text"
                         className="form-control"
                         placeholder="Username"
+                        value={userName}
+                        onChange={(e) => onChangeInput(e, "username")}
                       />
                     </div>
                   </div>
@@ -53,15 +63,22 @@ const Login = () => {
                         type="password"
                         className="form-control"
                         placeholder="Password"
+                        value={password}
+                        onChange={(e) => onChangeInput(e, "password")}
                       />
                     </div>
                   </div>
                   <hr className="hr-xs" />
-                  <button className="btn btn-primary btn-block" type="submit">
+                  <button
+                    className="btn btn-primary btn-block"
+                    onClick={() =>
+                      dispatch(setloginDetails(userName, password))
+                    }
+                  >
                     Login
                   </button>
 
-                  <div className="login-footer">
+                  {/* <div className="login-footer">
                     <h6>Or register with</h6>
                     <ul className="social-icons">
                       <li>
@@ -80,7 +97,7 @@ const Login = () => {
                         </a>
                       </li>
                     </ul>
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* <div className="login-links">
@@ -95,9 +112,9 @@ const Login = () => {
             </div>
           </div>
         </div>
-      </div>
+      </ModalContainer>
     </Modal>
-  );
+  ) : null;
 };
 
 export default Login;

@@ -6,6 +6,23 @@ export const Modalheader = styled("div")`
   }
 `;
 
+export const ModalContainer = styled("div")`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+
+  #modal {
+    background: #f3f3f3;
+  }
+`;
+
 export const Modalbody = styled("div")`
   .login-page {
     background-color: #e5e7ed;
@@ -17,9 +34,7 @@ export const Modalbody = styled("div")`
   }
   .login-block {
     background-color: #fff;
-    padding: 60px;
-    -webkit-box-shadow: 0 3px 50px 0 rgba(0, 0, 0, 0.1);
-    box-shadow: 0 3px 50px 0 rgba(0, 0, 0, 0.1);
+    padding: 10px;
     text-align: center;
     border-radius: 5px;
   }
@@ -31,8 +46,6 @@ export const Modalbody = styled("div")`
   }
   .login-block h1 {
     font-size: 22px;
-    margin-bottom: 60px;
-    margin-top: 40px;
   }
   .login-block h6 {
     font-size: 11px;
